@@ -1,0 +1,41 @@
+==  Introduction
+
+This project reads purchase_orders from a mongo repository and calculates the finance charge for the transaction, then stores the result in a jdbc data store.
+
+== Build the project
+
+=== To build the demo project
+
+```
+./mvnw clean package
+```
+
+=== To build the docker image
+```
+./mvnw -DskipTests dockerfile:build
+```
+NOTE: Make sure you are using java 8 when building docker image.
+
+=== Create the output table required for the demo
+Use the following DDL to create the table for a MySql DB
+```
+CREATE TABLE credit_transaction
+(
+   clicks int(11),
+   zone varchar(255),
+   sku bigint(11),
+   quantity int(11),
+   amount decimal(6,2),
+   mode varchar(255),
+   transaction_fee decimal(6,2)
+)
+;
+```
+
+The format of the data that should be stored for purchase_orders should be as follows:
+```
+db.purchase_orders.save({ "_id" : ObjectId("5f3eb5cc81f1470001036957"), "clicks" : "12", "zone" : "west-1", "sku" : "102453548", "amount" : "9.99", "quantity" : "3", "mode" : "credit" })
+db.purchase_orders.save({ "_id" : ObjectId("5f3ebb0d81f1470001036958"), "clicks" : "12", "zone" : "west-1", "sku" : "102453548", "amount" : "9.99", "quantity" : "3", "mode" : "credit" })
+db.purchase_orders.save({ "_id" : ObjectId("5f3ebb5781f1470001036959"), "clicks" : "12", "zone" : "west-1", "sku" : "102453548", "amount" : "9.99", "quantity" : "3", "mode" : "credit" })
+db.purchase_orders.find();
+```

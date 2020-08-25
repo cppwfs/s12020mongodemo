@@ -1,0 +1,12 @@
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          task: debug
+spring:
+  batch:
+    job:
+      jobName: mongo-process
+      step-name: slack-process-step
+      chunk-size: 5
