@@ -21,8 +21,7 @@ Use the following DDL to create the table for a MySql DB
 ```
 CREATE TABLE credit_transaction
 (
-   clicks int(11),
-   zone varchar(255),
+   user_id varchar(255),
    sku bigint(11),
    quantity int(11),
    amount decimal(6,2),

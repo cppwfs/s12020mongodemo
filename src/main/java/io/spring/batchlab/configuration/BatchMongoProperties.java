@@ -35,8 +35,8 @@ public class BatchMongoProperties {
 
 	private String collection = "purchase_orders";
 
-	private String jdbcWriteString = "INSERT INTO credit_transaction (clicks, zone, sku, amount, " +
-			"quantity, mode, transaction_fee) VALUES (:clicks, :zone, :sku, " +
+	private String jdbcWriteString = "INSERT INTO credit_transaction (user_id, sku, amount, " +
+			"quantity, mode, transaction_fee) VALUES (:user_id, :sku, " +
 			":amount, :quantity, :mode, :transaction_fee)";
 
 	private String stepName = "financialReportStep";
